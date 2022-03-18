@@ -1,0 +1,27 @@
+.light-mode {
+	--text-color: black;
+	--background-color: #fff;
+	--card-background-color: #fff;
+	--navbar-bg: #fff;
+}
+
+.dark-mode {
+	--text-color: white;
+	--background-color: rgb(17 17 17/1);
+	--card-background-color: rgb(34 34 34/1);
+	--navbar-bg: rgb(34 34 34/1);
+}
+
+ul {
+	background-color: var(--navbar-bg);
+}
+
+body {
+	color: var(--text-color) !important;
+	background-color: var(--background-color);
+}
+
+.card {
+	background-color: var(--card-background-color);
+	color: var(--text-color);
+}
