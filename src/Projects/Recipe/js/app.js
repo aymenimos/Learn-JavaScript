@@ -1,22 +1,22 @@
 import { fetchRecipes } from "./fetchRecipe";
 
 class Render {
-	constructor(_targetID) {
-		this.targetID = _targetID;
-		this.target = this.getTargetElement();
-	}
+    constructor(_targetID) {
+        this.targetID = _targetID;
+        this.target = this.getTargetElement();
+    }
 
-	getTargetElement() {
-		return document.getElementById(this.targetID);
-	}
+    getTargetElement() {
+        return document.getElementById(this.targetID);
+    }
 
-	injectContent(content) {
-		this.target.innerHTML += content;
-	}
+    injectContent(content) {
+        this.target.innerHTML += content;
+    }
 }
 
 const getRecipeCard = ({ recipeTitle, recipeImg, recipeDescription, recipeURL }) => {
-	return `
+    return `
 		<div class="col">
 			<div class="card">
 				<img
@@ -38,19 +38,21 @@ const getRecipeCard = ({ recipeTitle, recipeImg, recipeDescription, recipeURL })
 };
 
 const renderRecipes = async () => {
-	const recipes = await fetchRecipes();
+    const recipes = await fetchRecipes();
 
-	const recipeCards = recipes.map((recipe) => {
-		return getRecipeCard({
-			recipeTitle: recipe.post_title,
-			recipeImg: recipe.post_img_url_src,
-			recipeDescription: recipe.post_description,
-			recipeURL: recipe.post_url
-		});
-	});
+    const recipeCards = recipes.map((recipe) => {
+        return getRecipeCard({
+            recipeTitle: recipe.post_title,
+            recipeImg: recipe.post_img_url_src,
+            recipeDescription: recipe.post_description,
+            recipeURL: recipe.post_url
+        });
+    });
 
-	const renderer = new Render("recipeContainer");
-	renderer.injectContent(recipeCards.join(" "));
+    console.log(recipeCards);
+
+    const renderer = new Render("recipeContainer");
+    renderer.injectContent(recipeCards.join(" "));
 };
 
 renderRecipes();
